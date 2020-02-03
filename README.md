@@ -1,14 +1,11 @@
-A small example of a calculator written with flex / bison.
-
-Compile using the `Makefile` 
-
-    $ make
-
-or manually on Linux, follow this steps:
-
-    $ bison -d calc.y
-    $ flex calc.l
-    $ gcc calc.tab.c lex.yy.c -o calc -lm
-    $ ./calc
 # z3-proofs2latex
-# z3-proofs2latex
+
+A small script to produce a natural derivation using a z3 proof produced by the pretty printer of the Python API.
+
+Compile the parser using
+	$ make
+
+or obtain the pdf file proof.pdf using
+   $ make run
+
+Currently it supports the logic "QF_UFLIA".
