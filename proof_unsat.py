@@ -13,21 +13,21 @@ p = Function("p", Z, B)
 
 s = Solver()
 
-# s.push()
-# s.add(f(x1, 0) >= x3)
-# s.add((x3- f(x1, 0)) >= 1)
-# if (s.check() == unsat):
-#     print s.proof()
-# s.pop()
-
 s.push()
-s.add(1 <= x)
-s.add(x <= 2)
-s.add(a == 1)
-s.add(b == 2)
-s.add(p(x))
-s.add(Not(p(a)))
-s.add(Not(p(b)))
+s.add(f(x1, 0) >= x3)
+s.add((x3- f(x1, 0)) >= 1)
 if (s.check() == unsat):
     print s.proof()
 s.pop()
+
+# s.push()
+# s.add(1 <= x)
+# s.add(x <= 2)
+# s.add(a == 1)
+# s.add(b == 2)
+# s.add(p(x))
+# s.add(Not(p(a)))
+# s.add(Not(p(b)))
+# if (s.check() == unsat):
+#     print s.proof()
+# s.pop()

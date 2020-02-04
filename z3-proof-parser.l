@@ -66,6 +66,6 @@
 "*"               {yylval.sval = strdup(yytext); return OP_SYM;}
 "-"               {yylval.sval = strdup(yytext); return MINUS_SYM;}
 "/"               {yylval.sval = strdup(yytext); return OP_SYM;}
-[a-zA-Z0-9_]+      {yylval.sval = strdup(yytext); return T_NAME;}
+[a-zA-Z0-9_]+     {yylval.sval = strdup(yytext); return T_NAME;}
 
 %%
