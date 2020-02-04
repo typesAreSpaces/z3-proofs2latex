@@ -62,6 +62,7 @@
 "<="              {yylval.sval = strdup(yytext); return REL_SYM;}
 ">="              {yylval.sval = strdup(yytext); return REL_SYM;}
 "=="              {yylval.sval = strdup(yytext); return REL_SYM;}
+"!="              {yylval.sval = strdup(yytext); return REL_SYM;}
 "+"               {yylval.sval = strdup(yytext); return OP_SYM;}
 "*"               {yylval.sval = strdup(yytext); return OP_SYM;}
 "-"               {yylval.sval = strdup(yytext); return MINUS_SYM;}

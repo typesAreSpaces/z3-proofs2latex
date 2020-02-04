@@ -3,31 +3,12 @@
 from z3 import *
 
 set_param(proof=True)
-
-Z = IntSort()
-B = BoolSort()
-x1, x2, x3 = Ints("x1 x2 x3")
-a, b, x = Ints("a b x")
-f = Function("f", Z, Z, Z)
-p = Function("p", Z, B)
+set_option(max_args=10000000, max_lines=1000000, max_depth=10000000, max_visited=1000000)
+set_pp_option("max_indent", 0)
+set_pp_option("max_width", 100000)
 
 s = Solver()
-
-s.push()
-s.add(f(x1, 0) >= x3)
-s.add((x3- f(x1, 0)) >= 1)
-if (s.check() == unsat):
+s.from_file("./smt2_files/a.smt2")
+# s.from_file("./smt2_files/QF_UFLIA/mathsat/Hash/hash_uns_03_03.smt2")
+if(s.check() == unsat):
     print s.proof()
-s.pop()
-
-# s.push()
-# s.add(1 <= x)
-# s.add(x <= 2)
-# s.add(a == 1)
-# s.add(b == 2)
-# s.add(p(x))
-# s.add(Not(p(a)))
-# s.add(Not(p(b)))
-# if (s.check() == unsat):
-#     print s.proof()
-# s.pop()
