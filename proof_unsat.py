@@ -2,8 +2,11 @@
 
 from z3 import *
 
-set_param(proof=True)
-set_option(max_args=10000000, max_lines=1000000, max_depth=10000000, max_visited=1000000)
+set_option(max_args=10000000,
+           max_lines=1000000,
+           max_depth=10000000,
+           max_visited=1000000,
+           proof=True)
 set_pp_option("max_indent", 0)
 set_pp_option("max_width", 100000)
 
