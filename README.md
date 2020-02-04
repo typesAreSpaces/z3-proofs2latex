@@ -7,4 +7,4 @@ Obtain the pdf file proof.pdf using
     $ make
 ```
 
-Currently it supports the logic "QF_UFLIA".
+Currently, it supports the logic "QF_UFLIA".
