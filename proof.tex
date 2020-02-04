@@ -1,6 +1,0 @@
-\documentclass{standalone}
-\usepackage{ebproof}
-\begin{document}
-\begin{prooftree}\infer0[th-lemma]{Or(Not(f(x1, 0)+-1*x3<=-1), Not(f(x1, 0)+-1*x3>=0))}\infer0[asserted]{f(x1, 0)>=x3}\infer0[rewrite]{(f(x1, 0)>=x3)==(f(x1, 0)+-1*x3>=0)}\infer2[mp]{f(x1, 0)+-1*x3>=0}\infer0[asserted]{x3-f(x1, 0)>=1}\infer0[rewrite]{x3-f(x1, 0)==x3+-1*f(x1, 0)}\infer1[monotonicity]{(x3-f(x1, 0)>=1)==(x3+-1*f(x1, 0)>=1)}\infer2[mp]{x3+-1*f(x1, 0)>=1}\infer0[rewrite]{x3+-1*f(x1, 0)==-1*f(x1, 0)+x3}\infer1[monotonicity]{(x3+-1*f(x1, 0)>=1)==(-1*f(x1, 0)+x3>=1)}\infer0[rewrite]{(-1*f(x1, 0)+x3>=1)==(f(x1, 0)+-1*x3<=-1)}\infer2[trans]{(x3+-1*f(x1, 0)>=1)==(f(x1, 0)+-1*x3<=-1)}\infer2[mp]{f(x1, 0)+-1*x3<=-1}\infer3[unit-resolution]{False}\end{prooftree}
-\end{document}
-
