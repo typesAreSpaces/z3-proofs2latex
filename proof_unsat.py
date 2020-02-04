@@ -8,7 +8,7 @@ set_pp_option("max_indent", 0)
 set_pp_option("max_width", 100000)
 
 s = Solver()
-s.from_file("./smt2_files/a.smt2")
-# s.from_file("./smt2_files/QF_UFLIA/mathsat/Hash/hash_uns_03_03.smt2")
+s.from_file("./tests/a.smt2")
+# s.from_file("./tests/QF_UFLIA/mathsat/Hash/hash_uns_03_03.smt2")
 if(s.check() == unsat):
     print s.proof()
