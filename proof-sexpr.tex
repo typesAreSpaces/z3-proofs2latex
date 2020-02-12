@@ -1,0 +1,60 @@
+\documentclass[varwidth=2000pt]{standalone}
+\usepackage{ebproof}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\begin{document}
+$(not(\leq(+(f(x1)(0))(*(-(1))(x3)))(-(1))))$
+
+Proof/Definition of a!1
+
+$(not(\geq(+(f(x1)(0))(*(-(1))(x3)))(0)))$
+
+Proof/Definition of a!2
+
+$(=(\geq(f(x1)(0))(x3))(\geq(+(f(x1)(0))(*(-(1))(x3)))(0)))$
+
+Proof/Definition of a!3
+
+\begin{prooftree}\infer0[definition]{\hspace{0.001cm}(\geq\hspace{0.001cm}(-\hspace{0.001cm}(x3)\hspace{0.001cm}(f\hspace{0.001cm}(x1)\hspace{0.001cm}(0)))\hspace{0.001cm}(1))}\infer1[asserted]{}\end{prooftree}
+
+Proof/Definition of a!5
+
+$(=(-(x3)(f(x1)(0)))(+(x3)(*(-(1))(f(x1)(0)))))$
+
+Proof/Definition of a!6
+
+$(\geq(+(x3)(*(-(1))(f(x1)(0))))(1))$
+
+Proof/Definition of a!7
+
+$(=(+(x3)(*(-(1))(f(x1)(0))))(+(*(-(1))(f(x1)(0)))(x3)))$
+
+Proof/Definition of a!9
+
+$(\geq(+(*(-(1))(f(x1)(0)))(x3))(1))$
+
+Proof/Definition of a!10
+
+\begin{prooftree}\infer0[definition]{\hspace{0.001cm}(\geq\hspace{0.001cm}(f\hspace{0.001cm}(x1)\hspace{0.001cm}(0))\hspace{0.001cm}(x3))}\infer1[asserted]{}\infer0[definition]{\hspace{0.001cm}(a!3)}\infer1[rewrite]{}\infer0[definition]{\hspace{0.001cm}(\geq\hspace{0.001cm}(+\hspace{0.001cm}(f\hspace{0.001cm}(x1)\hspace{0.001cm}(0))\hspace{0.001cm}(*\hspace{0.001cm}(-\hspace{0.001cm}(1))\hspace{0.001cm}(x3)))\hspace{0.001cm}(0))}\infer3[mp]{}\end{prooftree}
+
+Proof/Definition of a!4
+
+$(=(\geq(-(x3)(f(x1)(0)))(1))(a!7))$
+
+Proof/Definition of a!8
+
+$(=(a!10)(\leq(+(f(x1)(0))(*(-(1))(x3)))(-(1))))$
+
+Proof/Definition of a!11
+
+$(=(a!7)(\leq(+(f(x1)(0))(*(-(1))(x3)))(-(1))))$
+
+Proof/Definition of a!12
+
+\begin{prooftree}\infer0[definition]{\hspace{0.001cm}(a!5)}\infer0[definition]{\hspace{0.001cm}(a!6)}\infer1[rewrite]{}\infer0[definition]{\hspace{0.001cm}(a!8)}\infer2[monotonicity]{}\infer0[definition]{\hspace{0.001cm}(a!7)}\infer3[mp]{}\infer0[definition]{\hspace{0.001cm}(a!9)}\infer1[rewrite]{}\infer0[definition]{\hspace{0.001cm}(=\hspace{0.001cm}(a!7)\hspace{0.001cm}(a!10))}\infer2[monotonicity]{}\infer0[definition]{\hspace{0.001cm}(a!11)}\infer1[rewrite]{}\infer0[definition]{\hspace{0.001cm}(a!12)}\infer3[trans]{}\infer0[definition]{\hspace{0.001cm}(\leq\hspace{0.001cm}(+\hspace{0.001cm}(f\hspace{0.001cm}(x1)\hspace{0.001cm}(0))\hspace{0.001cm}(*\hspace{0.001cm}(-\hspace{0.001cm}(1))\hspace{0.001cm}(x3)))\hspace{0.001cm}(-\hspace{0.001cm}(1)))}\infer3[mp]{}\end{prooftree}
+
+Proof/Definition of a!13
+
+\begin{prooftree}\infer0[definition]{\hspace{0.001cm}(or\hspace{0.001cm}(a!1)\hspace{0.001cm}(a!2))}\infer1[th-lemma]{}\infer0[definition]{\hspace{0.001cm}(a!4)}\infer0[definition]{\hspace{0.001cm}(a!13)}\infer0[definition]{\hspace{0.001cm}(false)}\infer4[unit-resolution]{}\end{prooftree}
+\end{document}
+

@@ -57,17 +57,17 @@
 "proof-trail"     {yylval.sval = strdup(yytext); return T_PROOF_RULE;}
 "("		  {return PAREN_LEFT;}
 ")"		  {return PAREN_RIGHT;}
-"<"               {yylval.sval = strdup(yytext); return REL_SYM;}
-">"               {yylval.sval = strdup(yytext); return REL_SYM;}
-"<="              {yylval.sval = strdup(yytext); return REL_SYM;}
-">="              {yylval.sval = strdup(yytext); return REL_SYM;}
-"=="              {yylval.sval = strdup(yytext); return REL_SYM;}
-"="               {yylval.sval = strdup(yytext); return REL_SYM;}
-"!="              {yylval.sval = strdup(yytext); return REL_SYM;}
-"+"               {yylval.sval = strdup(yytext); return OP_SYM;}
-"*"               {yylval.sval = strdup(yytext); return OP_SYM;}
-"-"               {yylval.sval = strdup(yytext); return MINUS_SYM;}
-"/"               {yylval.sval = strdup(yytext); return OP_SYM;}
+"<"               {yylval.sval = "<"; return REL_SYM;}
+">"               {yylval.sval = ">"; return REL_SYM;}
+"<="              {yylval.sval = "\\leq"; return REL_SYM;}
+">="              {yylval.sval = "\\geq"; return REL_SYM;}
+"=="              {yylval.sval = "="; return REL_SYM;}
+"="               {yylval.sval = "="; return REL_SYM;}
+"!="              {yylval.sval = "\\neq"; return REL_SYM;}
+"+"               {yylval.sval = "+"; return OP_SYM;}
+"*"               {yylval.sval = "*"; return OP_SYM;}
+"-"               {yylval.sval = "-"; return MINUS_SYM;}
+"/"               {yylval.sval = "/"; return OP_SYM;}
 [a-zA-Z0-9_][a-zA-Z0-9_!]*     {yylval.sval = strdup(yytext); return T_NAME;}
 
 %%
