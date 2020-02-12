@@ -1,12 +1,19 @@
 # z3-proofs2latex
 
-A small script to produce a natural derivation using a z3 proof produced by the pretty printer of the Python API.
+A small script to produce a natural derivation using a z3 proof produced by the C++/Python API.
 
-Edit the path file inside proof_unsat.py to parse the smt formula.
+Edit the path file in either proof_unsat.py or proof_unsat.cpp to parse the smt formula.
 
-Obtain the pdf file proof.pdf using
+Obtain the pdf file proof_python.pdf using
 ```
-    $ make
+    $ make proof_python
 ```
+
+Obtain the pdf file proof_cpp.pdf using
+```
+    $ make proof_cpp
+```
+
+There is an issue with the varwidth in the implementation using the proof from the Cpp api. You can change, if needed, this variable by changing _varwidth in z3-proof-parser-sexpr.y
 
 Currently, it supports the logic "QF_UFLIA".
