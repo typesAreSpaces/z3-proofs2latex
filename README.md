@@ -14,6 +14,6 @@ Obtain the pdf file proof_cpp.pdf using
     $ make proof_cpp
 ```
 
-There is an issue with the varwidth in the implementation using the proof from the Cpp api. You can change, if needed, this variable by changing _varwidth in z3-proof-parser-sexpr.y
+There is an issue with the varwidth in the implementation using the proof from the Cpp api. The system doesn't automatically detect the optimal varwith. You can change, if needed, this variable by changing _varwidth in z3-proof-parser-sexpr.y
 
 Currently, it supports the logic "QF_UFLIA".
