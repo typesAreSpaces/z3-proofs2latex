@@ -1,0 +1,58 @@
+\documentclass[varwidth=1000pt]{standalone}
+\usepackage{ebproof}
+\begin{document}
+(not (<= (+ (f (x1 ) (0 )) (* (- (1 )) (x3 ))) (- (1 ))))
+
+Proof/Definition of a!1
+
+(not (>= (+ (f (x1 ) (0 )) (* (- (1 )) (x3 ))) (0 )))
+
+Proof/Definition of a!2
+
+(= (>= (f (x1 ) (0 )) (x3 )) (>= (+ (f (x1 ) (0 )) (* (- (1 )) (x3 ))) (0 )))
+
+Proof/Definition of a!3
+
+\begin{prooftree}\infer0[definition]{else}   \infer1[asserted]{something}\end{prooftree}
+
+Proof/Definition of a!5
+
+(= (- (x3 ) (f (x1 ) (0 ))) (+ (x3 ) (* (- (1 )) (f (x1 ) (0 )))))
+
+Proof/Definition of a!6
+
+(>= (+ (x3 ) (* (- (1 )) (f (x1 ) (0 )))) (1 ))
+
+Proof/Definition of a!7
+
+(= (+ (x3 ) (* (- (1 )) (f (x1 ) (0 )))) (+ (* (- (1 )) (f (x1 ) (0 ))) (x3 )))
+
+Proof/Definition of a!9
+
+(>= (+ (* (- (1 )) (f (x1 ) (0 ))) (x3 )) (1 ))
+
+Proof/Definition of a!10
+
+\begin{prooftree}\infer0[definition]{else}  \infer1[asserted]{something} \infer0[definition]{else}\infer1[rewrite]{something} \infer0[definition]{else}    \infer3[mp]{something}\end{prooftree}
+
+Proof/Definition of a!4
+
+(= (>= (- (x3 ) (f (x1 ) (0 ))) (1 )) (a!7 ))
+
+Proof/Definition of a!8
+
+(= (a!10 ) (<= (+ (f (x1 ) (0 )) (* (- (1 )) (x3 ))) (- (1 ))))
+
+Proof/Definition of a!11
+
+(= (a!7 ) (<= (+ (f (x1 ) (0 )) (* (- (1 )) (x3 ))) (- (1 ))))
+
+Proof/Definition of a!12
+
+\begin{prooftree}\infer0[definition]{else} \infer0[definition]{else}\infer1[rewrite]{something} \infer0[definition]{else}\infer2[monotonicity]{something} \infer0[definition]{else}\infer3[mp]{something} \infer0[definition]{else}\infer1[rewrite]{something} \infer0[definition]{else} \infer2[monotonicity]{something} \infer0[definition]{else}\infer1[rewrite]{something} \infer0[definition]{else}\infer3[trans]{something} \infer0[definition]{else}    \infer3[mp]{something}\end{prooftree}
+
+Proof/Definition of a!13
+
+\begin{prooftree}\infer0[definition]{else} \infer1[th-lemma]{something} \infer0[definition]{else} \infer0[definition]{else} \infer0[definition]{else}\infer4[unit-resolution]{something}\end{prooftree}
+\end{document}
+
