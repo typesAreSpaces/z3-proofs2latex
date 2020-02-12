@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-    int _varwidth = 2000;
-    int new_proof_tree = 0;
-    int new_term_tree = 0;
+    unsigned _varwidth = 2000;
+    unsigned new_proof_tree = 0;
+    unsigned new_term_tree = 0;
 
     extern int yylex();
     extern int yyparse();
@@ -17,55 +17,23 @@
 	if(new_proof_tree == 0){
 	    if(new_term_tree == 0)
 		printf("$");
-	    new_term_tree++;
 	    printf("%c%s", extra, s);
 	}
 	else{
 	    if(new_term_tree == 0)
 		printf("\\infer0[definition]{");
-	    new_term_tree++;
 	    printf("\\hspace{0.001cm}%c%s", extra, s);
 	}
+	new_term_tree++;
     }
     void term_end(char extra){
-	if(new_proof_tree == 0){
-	    printf("%c", extra);
-	    new_term_tree--;
-	    if(new_term_tree == 0)
-		printf("$");
-	}
-	else{
-	    printf("%c", extra);
-	    new_term_tree--;
-	    if(new_term_tree == 0)
-		printf("}");
-	}
-    }
-
-    void rel_begin(char * s, char extra){
+	new_term_tree--;
+	printf("%c", extra);
 	if(new_proof_tree == 0){
 	    if(new_term_tree == 0)
 		printf("$");
-	    new_term_tree++;
-	    printf("%c%s", extra, s);
 	}
 	else{
-	    if(new_term_tree == 0)
-		printf("\\infer0[definition]{");
-	    new_term_tree++;
-	    printf("\\hspace{0.001cm}%c%s", extra, s);
-	}
-    }
-    void rel_end(char extra){
-	if(new_proof_tree == 0) {
-	    printf("%c", extra);
-	    new_term_tree--;
-	    if(new_term_tree == 0)
-		printf("$");
-	}
-	else{
-	    printf("%c", extra);
-	    new_term_tree--;
 	    if(new_term_tree == 0)
 		printf("}");
 	}
@@ -113,7 +81,7 @@ expression:
 T_NAME { term_begin($1, '('); term_end(')'); }
 | PAREN_LEFT T_LET PAREN_LEFT bindings PAREN_RIGHT expression PAREN_RIGHT
 | PAREN_LEFT MINUS_SYM    { term_begin($2, '(');  } expressions PAREN_RIGHT { term_end(')');     }
-| PAREN_LEFT REL_SYM      { rel_begin($2, '(');   } expressions PAREN_RIGHT { rel_end(')');      }
+| PAREN_LEFT REL_SYM      { term_begin($2, '(');  } expressions PAREN_RIGHT { term_end(')');     }
 | PAREN_LEFT OP_SYM       { term_begin($2, '(');  } expressions PAREN_RIGHT { term_end(')');     }
 | PAREN_LEFT T_PROOF_RULE { proof_begin();        } expressions PAREN_RIGHT { proof_end($4, $2); }
 | PAREN_LEFT T_NAME       { term_begin($2, '(');  } expressions PAREN_RIGHT { term_end(')');     }
