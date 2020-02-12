@@ -17,14 +17,17 @@
 	    printf("(%s ", s);
 	else{
 	    if(new_term_tree == 0)
-		printf("\\infer0[definition]{else}");
+		printf("\\infer0[definition]{");
 	    new_term_tree++;
+	    printf("%s", s);
 	}
     }
     void term_end(){
 	if(new_proof_tree == 0) printf(")");
 	else{
 	    new_term_tree--;
+	    if(new_term_tree == 0)
+		printf("}");
 	}
     }
 
@@ -38,7 +41,7 @@
     void proof_end(int num_args, char * proof_name){
         new_proof_tree--;
 	// printf(")");
-	printf("\\infer%d[%s]{something}", num_args, proof_name);
+	printf("\\infer%d[%s]{}", num_args, proof_name);
 	if (new_proof_tree == 0)
 	    printf("\\end{prooftree}");
     }
