@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+    int _varwidth = 2000;
     int new_proof_tree = 0;
     int new_term_tree = 0;
 
@@ -99,11 +100,11 @@
 %%
 
 parse:
-{ printf("\\documentclass[varwidth=2000pt]\{standalone}\
+{ printf("\\documentclass[varwidth=%dpt]\{standalone}\
 \n\\usepackage{ebproof}\
 \n\\usepackage{amssymb}\
 \n\\usepackage{amsmath}\
-\n\\begin{document}\n"); }
+\n\\begin{document}\n", _varwidth); }
 expression
 { printf("\n\\end{document}\n"); }
 ;
