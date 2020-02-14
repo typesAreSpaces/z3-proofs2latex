@@ -1,0 +1,13 @@
+(declare-fun x () Int)
+(declare-fun a () Int)
+(declare-fun b () Int)
+(declare-fun p (Int) Int)
+
+(assert (<= 1 x))
+(assert (<= x 2))
+(assert (= a 1))
+(assert (= b 2))
+(assert (= (p x) 3))
+(assert (= (p a) 4))
+(assert (= (p b) 5))
+(check-sat)
