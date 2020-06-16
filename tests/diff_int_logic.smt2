@@ -3,7 +3,7 @@
 (declare-fun b () Int)
 ;(declare-fun p (Int) Int)
 
-(assert (= (- a b) 1))
+(assert (= (+ a b) 1))
 (assert (= (- b a) 2))
 (assert (<= a 2))
 (assert (>= a 4))
