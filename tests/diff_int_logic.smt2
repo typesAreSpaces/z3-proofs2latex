@@ -5,8 +5,8 @@
 
 (assert (= (- a b) 1))
 (assert (= (- b a) 2))
-(assert (< a 2))
-(assert (> a 4))
+(assert (<= a 2))
+(assert (>= a 4))
 ;(assert (= (p x) 3))
 ;(assert (= (p a) 4))
 ;(assert (= (p b) 5))
