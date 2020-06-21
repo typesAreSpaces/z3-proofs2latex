@@ -1,25 +1,34 @@
 Z3DIR = /home/jose/Documents/GithubProjects/z3/build/libz3.so
+PARSER_DIR = ./parser
+SEXPR_PARSER_DIR = ./parser-sexpr
+PROOF_GEN_PY_DIR = ./proof_generator/python
+PROOF_GEN_CPP_DIR = ./proof_generator/cpp
 
-all: ok
+all: python_proof
 
-ok: 
-	make -C ./z3-proof-parser
+.PHONY: z3-proof-parser
+z3-proof-parser: 
+	make -C $(PARSER_DIR)
 
-proof_python: z3-proof-parser proof_unsat.py
-	./proof_unsat.py > $@.txt
-	./z3-proof-parser < $@.txt > $@.tex
+.PHONY: z3-proof-parser-sexpr
+z3-proof-parser-sexpr: 
+	make -C $(SEXPR_PARSER_DIR)
+
+python_proof: z3-proof-parser $(PROOF_GEN_PY_DIR)/gen_proof.py
+	$(PROOF_GEN_PY_DIR)/proof_gen.py > $@.txt
+	$(PARSER_DIR)/z3-proof-parser < $@.txt > $@.tex
 	pdflatex $@.tex
 
-proof_unsat: proof_unsat.cpp $(Z3DIR)
-	g++ -o $@ $^ -lpthread -Wall
-
-proof_cpp: z3-proof-parser-sexpr proof_unsat
-	./proof_unsat > $@.txt
-	./z3-proof-parser-sexpr < $@.txt > $@.tex
+cpp_proof: z3-proof-parser-sexpr $(PROOF_GEN_CPP_DIR)/bin/proof_gen
+	$(PROOF_GEN_CPP_DIR)/bin/proof_gen > $@.txt
+	$(SEXPR_PARSER_DIR)/z3-proof-parser-sexpr < $@.txt > $@.tex
 	pdflatex $@.tex
 
 .PHONY: clean
 clean:
-	rm -rf proof_python.aux proof_python.log proof_python.tex proof_python.txt proof_python.pdf \
-	proof_cpp.aux proof_cpp.log proof_cpp.tex proof_cpp.txt proof_cpp.pdf \
+	make -C $(PARSER_DIR)        clean
+	make -C $(SEXPR_PARSER_DIR)  clean
+	make -C $(PROOF_GEN_CPP_DIR) clean
+	rm -rf python_proof.aux python_proof.log python_proof.tex python_proof.txt python_proof.pdf \
+	cpp_proof.aux cpp_proof.log cpp_proof.tex cpp_proof.txt cpp_proof.pdf \
 	*\~
