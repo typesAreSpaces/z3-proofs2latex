@@ -14,8 +14,8 @@ set_pp_option("max_width", 100000)
 s = SolverFor("QF_LIA")
 s.set("smt.arith.solver", 4)
 
-# s.from_file("./tests/a.smt2")
-# s.from_file("./tests/paper_example.smt2")
-s.from_file("./tests/diff_int_logic.smt2")
+# s.from_file("./smt2_files/a.smt2")
+# s.from_file("./smt2_files/paper_example.smt2")
+s.from_file("./smt2_files/diff_int_logic.smt2")
 if(s.check() == unsat):
     print(s.proof())
