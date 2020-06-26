@@ -2,11 +2,15 @@
 
 from z3 import *
 
-set_option(max_args=10000000,
-           max_lines=1000000,
-           max_depth=10000000,
-           max_visited=1000000,
-           proof=True)
+set_option(auto_config=False,
+        max_args=10000000,
+        max_lines=1000000,
+        max_depth=10000000,
+        max_visited=1000000,
+        sat_simplify_delay=1000,
+        tactic_propagate_values_max=0,
+        tactic_solve_eqs_theory_solver=False,
+        proof=True)
 set_pp_option("max_indent", 0)
 set_pp_option("max_width", 100000)
 
@@ -17,6 +21,7 @@ s.set("smt.arith.solver", 4)
 # s.from_file("./smt2_files/a.smt2")
 # s.from_file("./smt2_files/paper_example.smt2")
 # s.from_file("./smt2_files/diff_int_logic.smt2")
-s.from_file("./smt2_files/boolean_cdcl_example.smt2")
+# s.from_file("./smt2_files/boolean_cdcl_example.smt2")
+s.from_file("./smt2_files/boolean_cdcl_example2.smt2")
 if(s.check() == unsat):
     print(s.proof())
