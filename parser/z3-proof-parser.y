@@ -3,11 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-    extern int yylex();
+extern int yylex();
     extern int yyparse();
     extern FILE* yyin;
 
-    void yyerror(const char* s);
+void yyerror(const char* s);
     %}
 
 %union {
@@ -26,21 +26,21 @@
 %%
 
 parse:
-{ printf("\\documentclass{standalone}\n\\usepackage{ebproof}\n\\begin{document}\n\\begin{prooftree}"); }
+     { printf("\\documentclass{standalone}\n\\usepackage{ebproof}\n\\begin{document}\n\\begin{prooftree}"); }
 proof_term
-{ printf("\\end{prooftree}\n\\end{document}\n"); }
+{ printf("\\end{prooftree}\n\\end{document}\n\n%%%%%% Local Variables:\n%%%%%% mode: latex\n%%%%%% TeX-master: \"main\"\n%%%%%% End:"); }
 ;
 
 proof_term:
-T_PROOF_RULE PAREN_LEFT proof_args { printf("\\infer%d[%s]{", $3, $1); } consequent_term PAREN_RIGHT { printf("}"); }
+          T_PROOF_RULE PAREN_LEFT proof_args { printf("\\infer%d[%s]{", $3, $1); } consequent_term PAREN_RIGHT { printf("}"); }
 ;
 
 proof_args: { $$ = 0; }
-| proof_term COMMA proof_args { $$ = $3 + 1; }
+          | proof_term COMMA proof_args { $$ = $3 + 1; }
 ;
 
 consequent_term:
-T_NAME { printf("%s", $1); }
+               T_NAME { printf("%s", $1); }
 | T_NAME PAREN_LEFT { printf("%s(", $1); } consequent_args PAREN_RIGHT { printf(")"); }
 | PAREN_LEFT { printf("("); } consequent_term PAREN_RIGHT { printf(")"); }
 | MINUS_SYM { printf("%s", $1); } consequent_term
@@ -50,18 +50,18 @@ T_NAME { printf("%s", $1); }
 ;
 
 consequent_args: consequent_term
-| consequent_term COMMA { printf(", "); } consequent_args
+               | consequent_term COMMA { printf(", "); } consequent_args
 
 %%
 
 int main() {
     yyin = stdin;
 
-    do {
-	yyparse();
+do {
+  yyparse();
     } while(!feof(yyin));
 
-    return 0;
+return 0;
 }
 
 void yyerror(const char* s) {
