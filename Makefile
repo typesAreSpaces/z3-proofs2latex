@@ -1,7 +1,7 @@
 PARSER_DIR=./parser
-#FILE=ex5_n2.smt2
+FILE=ex5_n2.smt2
 #FILE=ex5_n3.smt2
-FILE=ex5_n4.smt2
+#FILE=ex5_n4.smt2
 
 all: z3-parser
 	sed 's/|//g' ./smt2_files/$(FILE) > ./smt2_files/temp2.smt2
